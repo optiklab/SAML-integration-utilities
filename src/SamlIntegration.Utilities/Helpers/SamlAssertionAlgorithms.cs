@@ -181,13 +181,16 @@ namespace SamlIntegration.Utilities.Helpers
                     XmlElement encryptedRoot = encryptedAssertion.DocumentElement;
                     encryptedAssertion.InsertBefore(xmlDeclaration, encryptedRoot);
 
+                    // Form Assertion element
                     XmlElement encryptedAssertionElement = encryptedAssertion.CreateElement("saml",
                         "EncryptedAssertion", "urn:oasis:names:tc:SAML:2.0:assertion");
                     encryptedAssertion.AppendChild(encryptedAssertionElement);
 
+                    // Add encrypted content
                     var encryptedDataNode = encryptedAssertion.ImportNode(encryptedData.GetXml(), true);
                     encryptedAssertionElement.AppendChild(encryptedDataNode);
 
+                    // Form a document
                     var root = xmlDocument.DocumentElement;
                     var node = root.OwnerDocument.ImportNode(encryptedAssertionElement, true);
                     root.RemoveChild(xmlAssertionSource ?? throw new InvalidOperationException());

@@ -6,7 +6,7 @@ The aim is to show how to initialize Single Sign-On integration using [SAML vers
 
 ### How it works and what part of SAML workflow is covered
 
-See [Wiki page]() or read my full artile on [dev.to]() or [medium.com]() to understand full context.
+See my full artile on [dev.to](https://dev.to/optiklab/working-example-of-saml-single-sign-on-integration-using-c-39mb) to understand full context.
 
 ## Components
 
