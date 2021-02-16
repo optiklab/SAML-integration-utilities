@@ -24,8 +24,8 @@ Ask questions using contacts shown here [Anton Yarkov](https://optiklab.github.i
 
 ## Copyright
 
-Copyright © 2020 Anton Yarkov. All rights reserved.
-Contacts: hello@flipbitsoftware.com
+Copyright © 2021 Anton Yarkov. All rights reserved.
+Contacts: anton.yarkov@gmail.com
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
