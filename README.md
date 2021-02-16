@@ -1,10 +1,10 @@
 # SAML-integration-utilities
 
-## What it's all about
+### What it's all about
 
 The aim is to show how to initialize Single Sign-On integration using [SAML version 2 standard]() from Identity Provider to Service Providers (or your web application with authentication mechanisms) using C# .NET 5.0. 
 
-## How it works and what part of SAML workflow is covered
+### How it works and what part of SAML workflow is covered
 
 See [Wiki page]() or read my full artile on [dev.to]() or [medium.com]() to understand full context.
 
@@ -18,7 +18,7 @@ Small application that allows to initialize integration with Service Provider.
 
 A set of utlity classes 
 
-# Follow
+## Follow
 
 Ask questions using contacts shown here [Anton Yarkov](https://optiklab.github.io/)
 
