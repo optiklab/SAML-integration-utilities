@@ -22,15 +22,6 @@ Small application that allows to initialize integration with Service Provider by
 
 $> SamlIntegration.MetadataFileGenerator.exe
 
-Please type in parameters...
-Example:
-Partner-id: 123
-User-email: test@example.com
-Login-id: testuser1
-Platform: desktop
-EntityID: https://webstore.com/
-Thumbprint (optional, leave empty if signing not used): BDEBC9D4C82CE8798EA360FE45E0E6E95DF5F659
-
 3. After file is successfully generated, it will appear in the same Applcation directory.
 
 4. Provide metadata.xml and Public part of your certificate to the Service Provider.
