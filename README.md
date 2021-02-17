@@ -10,13 +10,42 @@ See my full artile on [dev.to](https://dev.to/optiklab/working-example-of-saml-s
 
 ## Components
 
-### Metadata File Generator
+## Metadata File Generator
 
-Small application that allows to initialize integration with Service Provider.
+Small application that allows to initialize integration with Service Provider by generating and sending metadata.xml file.
 
-### Saml Integration Utilities class library
+### How to use
 
-A set of utlity classes 
+1. First of all, you have to buy X.509 certificate (or maybe you already have one) in one of the publicly known vendors. This certificate should include both Private and Public keys and allow you to sign in the documents with it. You should have thumbprint identity of this certificate (find it in the certificate information).
+
+2. Then, simply run the app and follow the questions by putting your answers:
+
+$> SamlIntegration.MetadataFileGenerator.exe
+
+Please type in parameters...
+Example:
+Partner-id: 123
+User-email: test@example.com
+Login-id: testuser1
+Platform: desktop
+EntityID: https://webstore.com/
+Thumbprint (optional, leave empty if signing not used): BDEBC9D4C82CE8798EA360FE45E0E6E95DF5F659
+
+3. After file is successfully generated, it will appear in the same Applcation directory.
+
+4. Provide metadata.xml and Public part of your certificate to the Service Provider.
+
+## Saml Integration Utilities class library
+
+A set of utility classes 
+
+### How to use
+
+1. Attach library or project to your project
+
+2. Follow the Service Provider requirements and comment/remove the steps that are not necessary (i.e. sign of Assertion or SAMLResponse documents, encryption of Assertion document).
+
+3. Call SamlIntegrationSteps->BuildEncodedSamlResponse(...) to create SAMLResponse document ready for sending via HTTP POST request.
 
 ## Follow
 
@@ -27,7 +56,7 @@ Ask questions using contacts shown here [Anton Yarkov](https://optiklab.github.i
 Copyright © 2021 Anton Yarkov. All rights reserved.
 Contacts: anton.yarkov@gmail.com
 
-Licensed under the Apache License, Version 2.0 (the "License");
+Licensed under the Apache License, Version 2.0 (the "License
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
