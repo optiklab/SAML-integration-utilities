@@ -20,7 +20,9 @@ Small application that allows to initialize integration with Service Provider by
 
 2. Then, simply run the app and follow the questions by putting your answers:
 
+```bash
 $> SamlIntegration.MetadataFileGenerator.exe
+```
 
 3. After file is successfully generated, it will appear in the same Applcation directory.
 
