@@ -1,0 +1,8 @@
+language: csharp
+solution: src/SamlIntegration.sln
+mono: none
+dotnet: 5.0
+script:
+ - cd src/SamlIntegration.MetadataFileGenerator/
+ - dotnet restore
+ - dotnet build

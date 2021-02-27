@@ -1,5 +1,9 @@
 # SAML-integration-utilities
 
+|Branch      |Status   |
+|------------|---------|
+|master      | [![Build Status](https://api.travis-ci.com/optiklab/SAML-integration-utilities.svg?branch=main)](https://api.travis-ci.com/optiklab/SAML-integration-utilities.svg?branch=main) |
+
 ### What it's all about
 
 The aim is to show how to initialize Single Sign-On integration using [SAML version 2 standard]() from Identity Provider to Service Providers (or your web application with authentication mechanisms) using C# .NET 5.0. 
