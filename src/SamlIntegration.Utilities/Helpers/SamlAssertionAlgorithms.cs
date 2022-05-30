@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using SamlIntegration.Utilities.Schemas;
-using SamlIntegration.Utilities.UserData;
+using SamlIntegration.Utilities.Data;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace SamlIntegration.Utilities.Helpers
 {
-    public class SamlAssertionAlgorithms
+    public class SamlAssertionAlgorithms : ISamlAssertionAlgorithms
     {
         private const string IdPrefix = "_";
         private const string XsiSchema = @"http://www.w3.org/2001/XMLSchema-instance";
@@ -17,12 +17,12 @@ namespace SamlIntegration.Utilities.Helpers
 
         private readonly ILogger<SamlAssertionAlgorithms> _logger;
 
-        protected SamlAssertionAlgorithms(ILogger<SamlAssertionAlgorithms> logger)
+        public SamlAssertionAlgorithms(ILogger<SamlAssertionAlgorithms> logger)
         {
             _logger = logger;
         }
 
-        public static AssertionType Create(SamlIntegrationSettings settings, IUserDataRepository userData)
+        public AssertionType Create(SamlIntegrationSettings settings, IUserDataRepository userData)
         {
             var items = new List<AttributeType>();
             foreach (var attribute in settings.Attributes)

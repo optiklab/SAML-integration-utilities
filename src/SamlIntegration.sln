@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamlIntegration.MetadataFileGenerator", "SamlIntegration.MetadataFileGenerator\SamlIntegration.MetadataFileGenerator.csproj", "{C6257AC1-A3CB-4D7E-BFDA-297B4C016192}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamlIntegration.MetadataFileGenerator", "SamlIntegration.MetadataFileGenerator\SamlIntegration.MetadataFileGenerator.csproj", "{C6257AC1-A3CB-4D7E-BFDA-297B4C016192}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamlIntegration.Utilities", "SamlIntegration.Utilities\SamlIntegration.Utilities.csproj", "{EA7BD313-5E6D-4936-8C23-EC35D362F4C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamlIntegration.Utilities", "SamlIntegration.Utilities\SamlIntegration.Utilities.csproj", "{EA7BD313-5E6D-4936-8C23-EC35D362F4C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamlIntegration.Example", "SamlIntegration.Example\SamlIntegration.Example.csproj", "{293C2579-92F0-45C3-8A74-CC16822C85C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C6257AC1-A3CB-4D7E-BFDA-297B4C016192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -44,5 +43,23 @@ Global
 		{EA7BD313-5E6D-4936-8C23-EC35D362F4C4}.Release|x64.Build.0 = Release|Any CPU
 		{EA7BD313-5E6D-4936-8C23-EC35D362F4C4}.Release|x86.ActiveCfg = Release|Any CPU
 		{EA7BD313-5E6D-4936-8C23-EC35D362F4C4}.Release|x86.Build.0 = Release|Any CPU
+		{293C2579-92F0-45C3-8A74-CC16822C85C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{293C2579-92F0-45C3-8A74-CC16822C85C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{293C2579-92F0-45C3-8A74-CC16822C85C5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{293C2579-92F0-45C3-8A74-CC16822C85C5}.Debug|x64.Build.0 = Debug|Any CPU
+		{293C2579-92F0-45C3-8A74-CC16822C85C5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{293C2579-92F0-45C3-8A74-CC16822C85C5}.Debug|x86.Build.0 = Debug|Any CPU
+		{293C2579-92F0-45C3-8A74-CC16822C85C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{293C2579-92F0-45C3-8A74-CC16822C85C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{293C2579-92F0-45C3-8A74-CC16822C85C5}.Release|x64.ActiveCfg = Release|Any CPU
+		{293C2579-92F0-45C3-8A74-CC16822C85C5}.Release|x64.Build.0 = Release|Any CPU
+		{293C2579-92F0-45C3-8A74-CC16822C85C5}.Release|x86.ActiveCfg = Release|Any CPU
+		{293C2579-92F0-45C3-8A74-CC16822C85C5}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAC61E41-DD19-45AB-8F0D-7420AC0A23E5}
 	EndGlobalSection
 EndGlobal

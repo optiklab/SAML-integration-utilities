@@ -9,14 +9,14 @@ using System.Xml.Serialization;
 
 namespace SamlIntegration.Utilities.Helpers
 {
-    public class SamlResponseAlgorithms
+    public class SamlResponseAlgorithms : ISamlResponseAlgorithms
     {
         private const string XsiSchema = @"http://www.w3.org/2001/XMLSchema-instance";
         private const string XsdSchema = @"http://www.w3.org/2001/XMLSchema";
 
         private readonly ILogger<SamlResponseAlgorithms> _logger;
 
-        protected SamlResponseAlgorithms(ILogger<SamlResponseAlgorithms> logger)
+        public SamlResponseAlgorithms(ILogger<SamlResponseAlgorithms> logger)
         {
             _logger = logger;
         }

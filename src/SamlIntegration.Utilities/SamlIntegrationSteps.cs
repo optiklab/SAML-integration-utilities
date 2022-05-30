@@ -1,20 +1,14 @@
 ﻿using Microsoft.Extensions.Logging;
 using SamlIntegration.Utilities.Helpers;
 using SamlIntegration.Utilities.Schemas;
-using SamlIntegration.Utilities.UserData;
+using SamlIntegration.Utilities.Data;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using System.Security.Cryptography.Xml;
-using System.Text;
 using System.Xml;
-using System.Xml.Serialization;
 
 namespace SamlIntegration.Utilities
 {
-    public abstract class SamlIntegrationSteps
+    public class SamlIntegrationSteps : ISamlIntegrationSteps
     {
         private const string UriFormat = "{0}://{1}";
         private const string IdPrefix = "_";
@@ -24,50 +18,54 @@ namespace SamlIntegration.Utilities
         private const string ReturnUriParameter = "ReturnUri";
         private const string StartUriParameter = "StartUri";
 
-        private const string UserIdParameter = "UserId"; // Custom parameters depend on service providers.
+        // An example of custom parameters used for integration with third-party.
+        private const string UserIdParameter = "UserId";
 
-        private readonly ILogger<SamlAssertionAlgorithms> _logger;
+        private readonly ILogger<SamlIntegrationSteps> _logger;
         private readonly SamlAssertionAlgorithms _assertionAlgs;
         private readonly SamlResponseAlgorithms _responseAlgs;
         private readonly IUserDataRepository _userDataRepository;
+        private readonly IIntegrationConfiguration _configuration;
 
-        public SamlIntegrationSteps(ILogger<SamlAssertionAlgorithms> logger,
+        public SamlIntegrationSteps(ILogger<SamlIntegrationSteps> logger,
             SamlAssertionAlgorithms assertionAlgs,
             SamlResponseAlgorithms responseAlgs,
-            IUserDataRepository userDataRepository)
+            IUserDataRepository userDataRepository,
+            IIntegrationConfiguration configuration)
         {
             _logger = logger;
             _assertionAlgs = assertionAlgs;
             _responseAlgs = responseAlgs;
             _userDataRepository = userDataRepository;
+            _configuration = configuration;
         }
 
-        public string BuildEncodedSamlResponse(string serviceProviderUri,
-            string logoutUri,
-            string returnUri,
-            string startUri,
-            string issuerUri,
-            string userId,
-            string signingCertificateThumbprint,
-            string assertionEncryptionCertificateThumbprint)
+        /// <summary>
+        /// Builds authentication request data that is singed, encrypted and ready for use
+        /// by rules of the SAML 2.0 integraton protocol.
+        /// </summary>
+        /// <returns>String of data ready to be written into POST request.</returns>
+        public string BuildEncodedSamlResponse()
         {
+            // NOTE! This is just an example.
+            // The list of actual required attributes depends on the third-party vendor requirements.
             Dictionary<string, string> attributes = new Dictionary<string, string>
             {
-                { UserIdParameter, userId },
-                { LogoutUriParameter, logoutUri },
-                { ReturnUriParameter, returnUri },
-                { StartUriParameter, startUri }
+                { UserIdParameter, _userDataRepository.GetUserGuid() },
+                { LogoutUriParameter, _configuration.LogoutUri },
+                { ReturnUriParameter, _configuration.ReturnUri },
+                { StartUriParameter, _configuration.StartUri }
             };
 
-            Uri audienceUri = new Uri(serviceProviderUri);
+            Uri audienceUri = new Uri(_configuration.ServiceProviderUri);
 
             var settings = new SamlIntegrationSettings(
-                serviceProviderUri,
-                issuerUri,
+                _configuration.ServiceProviderUri,
+                _configuration.IssuerUri,
                 string.Format(UriFormat, audienceUri.Scheme, audienceUri.Host),
-                signingCertificateThumbprint,
+                _configuration.SigningCertificateThumbprint,
                 prependToId: IdPrefix,
-                assertionEncryptionCertificateThumbprint: assertionEncryptionCertificateThumbprint);
+                assertionEncryptionCertificateThumbprint: _configuration.AssertionEncryptionCertificateThumbprint);
 
             settings.Attributes = attributes;
 
@@ -76,7 +74,7 @@ namespace SamlIntegration.Utilities
 
         private string BuildAndSignSamlResponse(SamlIntegrationSettings settings)
         {
-            AssertionType assertion = SamlAssertionAlgorithms.Create(settings, _userDataRepository);
+            AssertionType assertion = _assertionAlgs.Create(settings, _userDataRepository);
 
             var samlResponse = _responseAlgs.Create(settings, assertion);
 
