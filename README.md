@@ -42,7 +42,10 @@ A set of utility classes
 
 2. Follow the Service Provider requirements and comment/remove the steps that are not necessary (i.e. sign of Assertion or SAMLResponse documents, encryption of Assertion document).
 
-3. Call SamlIntegrationSteps->BuildEncodedSamlResponse(...) to create SAMLResponse document ready for sending via HTTP POST request.
+3. Attach SamlIntegrationSteps Utilities to your project, so you could use and modify it
+4. Modify list of attributes (Dictionary<string, string>) inside of SamlIntegrationSteps.BuildEncodedSamlResponse() according to the needs of your third-party vendor. Usually, it requires some kind of user identity and user profile information to be passed.
+5. In the client code (see IntegrationClientExample in the Example project) call SamlIntegrationSteps.BuildEncodedSamlResponse() to create SAMLResponse document ready for the authentication HTTP POST request.
+6. Parse HTTP response to find redirect URL and do the redirect, so user will be authenticated on the vendor side.
 
 ## Follow
 
